@@ -11,6 +11,10 @@ class IDKCascade:
         """
         self.confidence_threshold = confidence_threshold
         self.device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
+        if self.device.type == 'mps':
+            print("Using MPS device")
+        else:
+            print(f"Using {self.device.type} device")
 
         # Load pre-trained models
         if base_model_name == 'resnet50':
